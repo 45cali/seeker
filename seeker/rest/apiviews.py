@@ -3,6 +3,7 @@ from ..models import *
 from django.contrib.auth.models import User, Group
 from rest_framework import status, viewsets, permissions, filters
 from seeker.rest.serializers import *
+from seeker.rest.custompermissions import *
 
 class UserViewSet(viewsets.ModelViewSet):
 	queryset = User.objects.all()
@@ -33,19 +34,25 @@ class TemplateViewSet(viewsets.ModelViewSet):
 	
 
 class LookUpViewSet(viewsets.ModelViewSet):
+	
 	queryset = LookUp.objects.all()
 	serializer_class = LookUpSerializer
+	permission_classes = (IsCreatorOrReadOnly,)
 
 	def perform_create(self, serializer):
-		
+		instance = serializer.save(created_by=self.request.user)
+
+	'''
 		instance = serializer.save( created_by = self.request.user, 
 									product    = self.request.data['product'].lower(),)
 		if not Product.objects.filter(product=self.request.data['product'].lower()).exists():
 			p = Product(product=self.request.data['product'].lower())
 			p.save()
-						
-	def perform_update(self, serializer):
-		instance = serializer.save( created_by=self.request.user,)
+					
+	#def perform_update(self, serializer):
+		#instance = serializer.save(created_by=self.request.user)
+	
 		if not Product.objects.filter(product=self.request.data['product'].lower()).exists():
 			p = Product(product=self.request.data['product'].lower())
 			p.save()
+	'''

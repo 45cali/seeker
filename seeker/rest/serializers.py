@@ -10,22 +10,22 @@ class UserSerializer(serializers.ModelSerializer):
 class GroupSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Group
-		fields = ('url', 'name')	
+		fields = ('url', 'id', 'name')	
 
 class AlertSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Alert
-		fields = ('url','alert')
+		fields = ('url', 'id', 'alert')
 
 class ProductSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Product
-		fields = ('url','product')		
+		fields = ('url', 'id', 'product')		
 
 class TemplateSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Template
-		fields = ('url','name', 'description', 'alert_set')
+		fields = ('url', 'id', 'name', 'description', 'alert_set')
 
 class LookUpSerializer(serializers.ModelSerializer):
 	
@@ -33,6 +33,7 @@ class LookUpSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = LookUp
 		fields = ('url',
+				'id',
 				'pattern',
 				'product',
 				'created_by',
