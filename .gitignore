@@ -59,3 +59,7 @@ db.sqlite3
 
 # emacs temp files
 .#*
+
+# migrations
+
+.migrations/*
