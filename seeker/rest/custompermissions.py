@@ -3,7 +3,7 @@ from rest_framework import permissions
 from ..models import LookUp
 
 
-class IsCreatorOrReadOnly(permissions.BasePermission):
+class IsInOwnerGroupOrReadOnly(permissions.BasePermission):
 	"""
 	Custom permission to only allow owners of an object to edit it.
 	"""
