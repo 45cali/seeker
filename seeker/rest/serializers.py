@@ -25,7 +25,7 @@ class ProductSerializer(serializers.ModelSerializer):
 class TemplateSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Template
-		fields = ('url', 'id', 'name', 'description', 'alert_set')
+		fields = ('url', 'id', 'name', 'description', 'alert_set', 'owner')
 
 class LookUpSerializer(serializers.ModelSerializer):
 	

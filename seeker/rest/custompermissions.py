@@ -26,10 +26,6 @@ class IsInOwnerGroupOrReadOnly(permissions.BasePermission):
 
 		return True
 
-
-
-
-
 	def has_object_permission(self, request, view, obj):
 		"""
 		Custom object permission to only allow owners of an object to edit it.
@@ -48,4 +44,16 @@ class IsInOwnerGroupOrReadOnly(permissions.BasePermission):
 		return False
 		
 
-			
+class IsCreatorOrReadOnly(permissions.BasePermission):
+    """
+    Custom permission to only allow owners of an object to edit it.
+    """
+
+    def has_object_permission(self, request, view, obj):
+        # Read permissions are allowed to any request,
+        # so we'll always allow GET, HEAD or OPTIONS requests.
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        # only owner has rw permissions
+        return unicode(obj.owner) == unicode(request.user)
