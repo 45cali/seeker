@@ -1,10 +1,12 @@
-from serializers import *
+from seeker.rest.serializers import *
 from ..models import *
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, serializers, status
 from seeker.rest.serializers import *
 from seeker.rest.custompermissions import *
-
+from seeker.rest.customvalidators import *
+import json
+from rest_framework.response import Response
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -42,12 +44,11 @@ class TemplateViewSet(viewsets.ModelViewSet):
     serializer_class = TemplateSerializer
     permission_classes = (IsCreatorOrReadOnly,)
 
+
     def perform_create(self, serializer):
+
         # set owner to current user
         instance = serializer.save(owner=self.request.user)
-
-
-
 
 class LookUpViewSet(viewsets.ModelViewSet):
     queryset = LookUp.objects.all()

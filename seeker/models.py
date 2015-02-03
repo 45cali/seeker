@@ -25,6 +25,6 @@ class Product(models.Model):
 class Template(models.Model):
     name = models.CharField(max_length=20, unique=True)
     description = models.CharField(max_length=255)
-    alert_set = jsonfield.JSONField(default=[])
+    alert_set = jsonfield.JSONField(default=[], )
     owner = models.CharField(max_length=255)
 

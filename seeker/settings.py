@@ -87,7 +87,7 @@ STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
     
-    
+
 }
 
 # Guardian Configs
