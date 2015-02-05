@@ -41,6 +41,6 @@ class LookUpSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = LookUp
-        fields = ('url','id','pattern','product','created_by','owner','alert_set')
+        fields = ('url','id','pattern','product','created_by','owner','alert_set','info','oncall','email')
 
 

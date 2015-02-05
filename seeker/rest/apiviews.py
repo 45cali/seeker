@@ -1,12 +1,29 @@
-from seeker.rest.serializers import *
 from ..models import *
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets, permissions, serializers, status
+from rest_framework import viewsets, permissions, status
 from seeker.rest.serializers import *
 from seeker.rest.custompermissions import *
 from seeker.rest.customvalidators import *
-import json
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.reverse import reverse
+from seeker.rest import fqdn
+
+
+@api_view(('GET',))
+def api_root(request, format=None):
+    '''
+    This is the root of the api and lists out the api options
+    '''
+    return Response({
+        'users': reverse('user-list', request=request, format=format),
+        'groups': reverse('group-list', request=request, format=format),
+        'alerts': reverse('alert-list', request=request, format=format),
+        'products': reverse('product-list', request=request, format=format),
+        'lookup': reverse('lookup-list', request=request, format=format),
+        'templates': reverse('template-list', request=request, format=format),
+        'seek' : reverse('seeker', request=request, format=None),
+    })
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -79,3 +96,34 @@ class LookUpViewSet(viewsets.ModelViewSet):
         if not Product.objects.filter(product=self.request.data['product'].lower()).exists():
             p = Product(product=self.request.data['product'].lower())
             p.save()
+
+
+
+
+@api_view(['GET','POST'])
+def Seeker(request, format=None):
+
+    if request.GET:
+        data = request.GET.copy()
+        fq = fqdn.FQDN(request,data)
+        res = fq.search()
+
+
+
+
+        return Response({'method': request.method,
+                     'data passed' : res
+                     }, status=200)
+
+
+
+    elif request.POST:
+        data = request.data
+        fq = fqdn.FQDN(request,data)
+        res = fq.search()
+        return Response({'method': request.method,
+                     'data passed' : res
+                     }, status=200)
+
+    else:
+        return Response({'methods':['GET','POST'],'info':'send me a hostname, im bored'}, status=200)

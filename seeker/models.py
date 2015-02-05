@@ -9,7 +9,9 @@ class LookUp(models.Model):
     created_by = models.CharField(max_length=255)
     owner = models.CharField(max_length=255)
     alert_set = jsonfield.JSONField(default=[], null=True, blank=True)
-
+    email = models.EmailField()
+    info = models.TextField()
+    oncall = models.URLField()
     class Meta:
         unique_together = (("pattern", "owner"),)
 

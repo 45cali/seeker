@@ -1,9 +1,12 @@
-defusedxml==0.4.1
 Django==1.7
+Markdown==2.5.2
+PyYAML==3.11
+argparse==1.2.1
+defusedxml==0.4.1
 django-filter==0.9.1
 django-guardian==1.2.5
 djangorestframework==3.0.3
 jsonfield==1.0.0
-Markdown==2.5.2
-PyYAML==3.11
+requests==2.5.1
 six==1.9.0
+wsgiref==0.1.2
