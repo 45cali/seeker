@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'guardian',
     'seeker',
+    'seeker-ui',
 )
 
 MIDDLEWARE_CLASSES = (
