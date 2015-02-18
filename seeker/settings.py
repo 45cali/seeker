@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'guardian',
     'seeker',
-    'seeker-ui',
+    'seeker_ui',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,7 +87,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
-    
+    'DEFAULT_RENDERER_CLASSES': ( 'rest_framework.renderers.JSONRenderer', 
+				  'rest_framework.renderers.JSONPRenderer', 
+				  'rest_framework.renderers.BrowsableAPIRenderer', ),    
 
 }
 
