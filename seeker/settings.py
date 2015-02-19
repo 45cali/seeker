@@ -40,10 +40,12 @@ INSTALLED_APPS = (
     'guardian',
     'seeker',
     'seeker_ui',
+    'corsheaders'
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -91,6 +93,11 @@ REST_FRAMEWORK = {
 				  'rest_framework.renderers.JSONPRenderer', 
 				  'rest_framework.renderers.BrowsableAPIRenderer', ),    
 
+     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
 }
 
 # Guardian Configs
@@ -100,3 +107,5 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend', # default
     'guardian.backends.ObjectPermissionBackend',
 )
+
+CORS_ORIGIN_ALLOW_ALL = True
