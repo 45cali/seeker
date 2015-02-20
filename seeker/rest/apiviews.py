@@ -112,7 +112,7 @@ def Seeker(request, format=None):
 
 
         return Response({'method': request.method,
-                     'data passed' : res
+                     'data_passed' : res
                      }, status=200)
 
 
@@ -122,7 +122,7 @@ def Seeker(request, format=None):
         fq = fqdn.FQDN(request,data)
         res = fq.search()
         return Response({'method': request.method,
-                     'data passed' : res
+                     'data_passed' : res
                      }, status=200)
 
     else:
