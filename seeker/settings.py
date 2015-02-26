@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import datetime
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -109,3 +111,12 @@ AUTHENTICATION_BACKENDS = (
 )
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+# Django REST framework JWT Configs
+JWT_AUTH = {
+     'JWT_ALLOW_REFRESH': False,
+     # enable 30 day login
+     'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=2592000),
+     
+}
+
