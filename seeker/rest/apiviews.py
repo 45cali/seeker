@@ -59,7 +59,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 class TemplateViewSet(viewsets.ModelViewSet):
     queryset = Template.objects.all()
     serializer_class = TemplateSerializer
-    permission_classes = (IsCreatorOrReadOnly,)
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,IsCreatorOrReadOnly,)
 
 
     def perform_create(self, serializer):
@@ -70,7 +70,7 @@ class TemplateViewSet(viewsets.ModelViewSet):
 class LookUpViewSet(viewsets.ModelViewSet):
     queryset = LookUp.objects.all()
     serializer_class = LookUpSerializer
-    permission_classes = (IsInOwnerGroupOrReadOnly,)
+    permission_classes = (permissions.DjangoModelPermissionsOrAnonReadOnly,IsInOwnerGroupOrReadOnly,)
 
     def perform_create(self, serializer):
         # set created_by to current user
