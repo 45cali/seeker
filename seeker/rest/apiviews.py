@@ -67,6 +67,11 @@ class TemplateViewSet(viewsets.ModelViewSet):
         # set owner to current user
         instance = serializer.save(owner=self.request.user)
 
+    def perform_update(self, serializer):
+
+        # set created_by to current user
+        instance = serializer.save(owner=str(self.request.user))
+
 class LookUpViewSet(viewsets.ModelViewSet):
     queryset = LookUp.objects.all()
     serializer_class = LookUpSerializer
