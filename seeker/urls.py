@@ -7,7 +7,7 @@ router = routers.SimpleRouter(trailing_slash=True)
 router.register(r'users',  apiviews.UserViewSet)
 router.register(r'groups', apiviews.GroupViewSet)
 router.register(r'alerts', apiviews.AlertViewSet)
-router.register(r'Products', apiviews.ProductViewSet)
+router.register(r'products', apiviews.ProductViewSet)
 router.register(r'lookup', apiviews.LookUpViewSet)
 router.register(r'templates', apiviews.TemplateViewSet)
 
