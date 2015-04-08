@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     'rest_framework',
     'guardian',
     'seeker',
-    'seeker_ui',
     'corsheaders'
 )
 
@@ -89,6 +88,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+TEMPLATE_DIRS = (
+        os.path.join(BASE_DIR, 'templates'),
+    )
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': ( 'rest_framework.renderers.JSONRenderer', 

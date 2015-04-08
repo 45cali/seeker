@@ -3,6 +3,7 @@ from django.contrib import admin
 from rest_framework import routers
 from seeker.rest import apiviews
 
+
 router = routers.SimpleRouter(trailing_slash=True)
 router.register(r'users',  apiviews.UserViewSet)
 router.register(r'groups', apiviews.GroupViewSet)
@@ -24,3 +25,4 @@ urlpatterns = patterns('',
     url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
 
 )
+

@@ -1,0 +1,16 @@
+[
+  {"name" : "Load Template", "info" : "Click the carat for a dropdown list of available templates. Click one of the template names and it will load the set of alert associated with that template."},
+  {"name" : "Undo Load Template", "info" : "Next to load template there is an undo option that will revert to the previous set of alerts that were loaded." },
+  {"name" : "Manually Add Alert" , "info" : "Add additional alerts that are not in the \"Master List\". Click the plus sign next to the input box to appen the alert list."},
+  {"name" : "Add alert From Master List", "info" : "Double click on an alert in the master list and the alert will be appended to the alert list if it is not already there." },
+  {"name" : "Filter Master List", "info" : "The search box below the master list will filter that list to make it easier to search the list." },
+  {"name" : "Filter Alert List", "info" : "The searchbox below the alert list makes it easier to search, but alerts filtered out in the list are not removed from the list."},
+  {"name" : "Remove Alert from Alert List", "info" : "Double click on an alert in the alert list and it will be removed from the list." },
+  {"name" : "Select A Product", "info" : "Click the carat next to the product input box for a list of products, or type in a product manually. Either is accepted." },
+  {"name" : "Select A Group", "info" : "Select available groups from the dropdown next to \"Group\" input box. Only groups current user is apart of will show up."},
+  {"name" : "Oncall Link", "info" : "Enter a link to selected groups oncall page."},
+  {"name" : "Email Address", "info" : "Enter email address of selected group"},
+  {"name" : "Escalation Information", "info": "Any information about this sop that is not defined anywhere else."}
+
+
+]
