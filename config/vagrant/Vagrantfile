@@ -1,0 +1,29 @@
+
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+$script = <<SCRIPT
+curl https://raw.githubusercontent.com/45cali/seeker/master/config/app/build.sh | sh
+SCRIPT
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "seeker"
+  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+  config.vm.hostname = "seeker.toc.tmcs"
+
+
+  config.vm.network "private_network", ip: "192.168.55.2"
+  #config.vm.network "public_network"
+  config.vm.synced_folder "./data", "/vagrant_data"
+
+  config.vm.provider :virtualbox do |vb|
+  vb.customize ["modifyvm", :id, "--memory", "2048"]
+  end
+
+  config.vm.provision "shell", inline: $script
+
+
+end

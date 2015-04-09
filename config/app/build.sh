@@ -30,6 +30,8 @@ python manage.py migrate
 python manage.py syncdb
 echo "from django.contrib.auth.models import User; User.objects.create_superuser('vagrant', 'admin@example.com', 'vagrant')" | python manage.py shell
 
+cd /
+
 chown www-data:www:data /app/seeker/
 chown www-data:www-data /app/seeker/db*
 
