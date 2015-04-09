@@ -32,7 +32,9 @@ echo "from django.contrib.auth.models import User; User.objects.create_superuser
 
 cd /
 
-chown www-data:www:data /app/seeker/
+pwd
 chown www-data:www-data /app/seeker/db*
+chown www-data:www:data /app/seeker/
 
+ll /app/
 service apache2 restart
