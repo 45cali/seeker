@@ -22,4 +22,15 @@ a2dissite 000-default-conf
 a2ensite seeker.conf
 
 service apache2 reload
+
+cd /app/seeker/
+echo 'build db'
+python manage.py makemigrations
+python manage.py migrate
+python manage.py syncdb
+echo "from django.contrib.auth.models import User; User.objects.create_superuser('vagrant', 'admin@example.com', 'vagrant')" | python manage.py shell
+
+chown www-data:www:data /app/seeker/
+chown www-data:www-data /app/seeker/db*
+
 service apache2 restart
