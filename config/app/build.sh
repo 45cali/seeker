@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo 'installing system dependencies'
 apt-get update
 apt-get install -y git
