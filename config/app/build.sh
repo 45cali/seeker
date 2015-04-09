@@ -10,13 +10,13 @@ echo 'building seeker in /app dir'
 mkdir /app
 cd /app
 git clone https://github.com/45cali/seeker.git
-cd seeker
+cd /app/seeker/
 echo 'installing django dependencies via pip'
-pip install -r requirements
+pip install -r requirements.txt
 
 echo 'updating apache vhost conf'
 
-cp ../apache/seeker.conf /etc/apache2/sites-available/
+cp /app/seeker/config/apache/seeker.conf /etc/apache2/sites-available/
 
 a2dissite 000-default-conf
 a2ensite seeker.conf
