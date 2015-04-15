@@ -1,0 +1,146 @@
+
+[
+
+          {"endpoints":[
+                {
+                "name": "api",
+                "path": "/api/",
+                "info": "This is the root of the REST api. This endpoint returns a list of endpoints.",
+                "methods": [
+                "OPTIONS",
+                "GET"
+                ]
+                },
+                {
+                "name":"templates",
+                "path":"/api/templates/",
+                "info":"Add or edit alert templates.",
+                "methods":["GET",
+                "POST",
+                "HEAD",
+                "OPTIONS"],
+                "fields":["name",
+                "description",
+                "alert_set",
+                "owner"]
+                },
+                {
+                "name":"alerts",
+                "path":"/api/alerts/",
+                "info":"List of alerts that can be used to make templates or SOPs",
+                "methods":["GET",
+                "POST",
+                "HEAD",
+                "OPTIONS"],
+                "fields":["alert"]
+                },
+                {
+                "name":"sop (lookup)",
+                "path":"/api/lookup/",
+                "info":"For SOP, the endpoint is /api/lookup/. This is where SOPs can be added or edited.",
+                "methods":["GET",
+                "POST",
+                "HEAD",
+                "OPTIONS"],
+                "fields":[  "pattern",
+                "product",
+                "created_by",
+                "owner",
+                "alert_set",
+                "info",
+                "oncall",
+                "email"]
+                },
+                {
+                "name":"products",
+                "path":"/api/products/",
+                "info":"Lists all products",
+                "methods":["GET",
+                "POST",
+                "HEAD",
+                "OPTIONS"],
+                "fields":["product"]
+                },
+                {
+                "name":"seeker",
+                "path":"/api/seek/",
+                "info":"Searches for SOP matches in /api/lookup/",
+                "methods": ["POST",
+                "OPTIONS",
+                "GET"],
+                "fields":["hostname",
+                "alert"]
+                },
+                {
+                "name":"Groups",
+                "path":"/api/groups/",
+                "info":"List of groups",
+                "methods": ["POST",
+                "OPTIONS",
+                "GET",
+                "HEAD"],
+                "fields":["name"]
+                },
+                {
+                "name":"Users",
+                "path":"/api/users/",
+                "info":"List of users",
+                "methods": ["POST",
+                "OPTIONS",
+                "GET",
+                "HEAD"],
+                "fields":[ "username",
+                "email",
+                "is_staff",
+                "groups"]
+                }
+
+          ]},
+          {"examples":[
+            {"name":"Search seeker for SOP by hostname and alert",
+              "command":"curl",
+              "url":"/api/seek/?hostname=example.com&&alert=ping",
+              "response":"Check to see who supports ping alerts for example.com"
+            },
+            {"name":"Get specific template",
+              "command":"curl",
+              "url":"/api/templates/1/",
+              "response":"Get details for a template with id=1"
+            }
+          ]},
+           {"jwt":[
+             {
+               "name":"Get a token",
+               "command":"$ curl -X POST -d 'username=admin&password=abc123' http://localhost:8000/api-token-auth/"
+             },
+             {
+               "name":"Get a token with modified header",
+               "command":"$ curl -X POST -H 'Content-Type: application/json' -d '{'username':'admin','password':'abc123'}' http://localhost:8000/api-token-auth/"
+             },
+             {
+               "name":"Access protected api urls",
+               "command":"$ curl -H 'Authorization: JWT <your_token>' http://localhost:8000/protected-url/"
+             },
+             {
+               "name":"Verify valid token",
+               "command":"$ curl -X POST -H 'Content-Type: application/json' -d '{'token':'<EXISTING_TOKEN>'}' http://localhost:8000/api-token-verify/"
+             }
+
+
+           ]}
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
