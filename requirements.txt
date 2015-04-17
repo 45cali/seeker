@@ -13,3 +13,4 @@ jsonfield==1.0.0
 requests==2.5.1
 six==1.9.0
 wsgiref==0.1.2
+MySQL-python==1.2.3
