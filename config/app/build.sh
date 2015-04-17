@@ -2,7 +2,7 @@
 echo '################### SEEKER WITH MYSQL BUILD ###############################'
 echo 'installing system dependencies'
 apt-get update
-apt-apt-get install -y python python-dev python-distribute python-pip
+apt-get install -y python python-dev python-distribute python-pip
 apt-get install -y git
 apt-get install -y apache2 libapache2-mod-wsgi
 
