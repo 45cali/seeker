@@ -1,4 +1,4 @@
-curl https://raw.githubusercontent.com/45cali/seeker/mysql/config/docker/Dockerfile > ./Dockerfile
+curl https://raw.githubusercontent.com/45cali/seeker/master/config/docker/Dockerfile > ./Dockerfile
 
 sudo docker build -t='seeker:mysqlv1' .
 
