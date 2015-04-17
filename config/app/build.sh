@@ -5,6 +5,7 @@ apt-get update
 apt-get install -y git
 apt-get install -y apache2 libapache2-mod-wsgi
 apt-get install -y python-pip
+apt-get install python-mysqldb
 
 echo 'building seeker in /app dir'
 mkdir /app
