@@ -5,6 +5,7 @@ apt-get update
 apt-get install -y python python-dev python-distribute python-pip
 apt-get install -y git
 apt-get install -y apache2 libapache2-mod-wsgi
+apt-get install -y libmysqlclient-dev
 
 easy_install -U pip
 
