@@ -1,6 +1,6 @@
 curl https://raw.githubusercontent.com/45cali/seeker/mysql/config/docker/Dockerfile > ./Dockerfile
 
-sudo docker build -t='seeker:mysql' .
+sudo docker build -t='seeker:mysqlv1' .
 
-sudo docker run -d -i -t -P seeker:mysql /usr/sbin/apache2ctl -D FOREGROUND
+sudo docker run -d -i -t -P seeker:mysqlv1 /usr/sbin/apache2ctl -D FOREGROUND
 
