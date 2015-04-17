@@ -1,11 +1,12 @@
 #!/bin/bash
-
+echo '################### SEEKER WITH MYSQL BUILD ###############################'
 echo 'installing system dependencies'
 apt-get update
+apt-apt-get install -y python python-dev python-distribute python-pip
 apt-get install -y git
 apt-get install -y apache2 libapache2-mod-wsgi
-apt-get install -y python-pip
-apt-get install python-mysqldb
+
+easy_install -U pip
 
 echo 'building seeker in /app dir'
 mkdir /app
@@ -28,6 +29,7 @@ service apache2 reload
 
 cd /app/seeker/
 echo 'build db'
+pwd
 python manage.py makemigrations
 python manage.py migrate
 python manage.py syncdb
