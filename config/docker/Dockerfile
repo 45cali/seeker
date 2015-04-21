@@ -8,6 +8,7 @@ ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
 
+# SSL SUPPORT
 #RUN /bin/ln -sf ../sites-available/default-ssl /etc/apache2/sites-enabled/001-default-ssl
 #RUN /bin/ln -sf ../mods-available/ssl.conf /etc/apache2/mods-enabled/
 #RUN /bin/ln -sf ../mods-available/ssl.load /etc/apache2/mods-enabled/
@@ -28,17 +29,13 @@ RUN a2ensite seeker.conf
 
 RUN pip install -r /app/seeker/requirements.txt
 
-RUN python /app/seeker/manage.py makemigrations
-
-RUN python /app/seeker/manage.py migrate
-
-RUN python /app/seeker/manage.py syncdb
-
-RUN echo "from django.contrib.auth.models import User; User.objects.create_superuser('vagrant1', 'admin@example.com', 'vagrant')" | python /app/seeker/manage.py shell
-
 EXPOSE 3306
 EXPOSE 80
 EXPOSE 443
 
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+
+WORKDIR /app/seeker/
+
+CMD ["python", "manage.py", "syncdb"]
 
