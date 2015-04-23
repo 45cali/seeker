@@ -112,23 +112,19 @@ def Seeker(request, format=None):
         data = request.GET.copy()
         fq = fqdn.FQDN(request,data)
         res = fq.search()
-
-
-
-
-        return Response({'method': request.method,
-                     'data_passed' : res
-                     }, status=200)
-
-
+        return Response({'method': request.method, 'data_passed' : res}, status=200)
 
     elif request.POST:
         data = request.data
         fq = fqdn.FQDN(request,data)
         res = fq.search()
-        return Response({'method': request.method,
-                     'data_passed' : res
-                     }, status=200)
+        return Response({'method': request.method, 'data_passed' : res}, status=200)
+
+    elif request.DATA:
+        data = request.data
+        fq = fqdn.FQDN(request,data)
+        res = fq.search()
+        return Response({'method': request.method, 'data_passed' : res}, status=200)
 
     else:
         return Response({'methods':['GET','POST'],'info':'send me a hostname, im bored'}, status=200)

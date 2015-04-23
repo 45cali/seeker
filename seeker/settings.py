@@ -66,11 +66,11 @@ WSGI_APPLICATION = 'seeker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
-        'HOST': '',
-        'PORT': '',
-        'USER': '',
-        'PASSWORD': '' 
+        'NAME': 'seekerdb',
+        'HOST': 'seeker-db.toc.tmcs',
+        'PORT': '3306',
+        'USER': 'seeker_db_user',
+        'PASSWORD': '$seeKer.01$', 
     }
 }
 
