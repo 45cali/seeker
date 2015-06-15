@@ -17,8 +17,12 @@ class FQDN:
             r = requests.get(url)
             r = r.json()
             for i in r:
-                if bool(re.match(i['pattern'],hostname)):
-                    l.append(i)
+                # try except to skip invalid regex
+                try:
+                    if bool(re.match(i['pattern'],hostname)):
+                        l.append(i)
+                except:
+                    pass
 
             if len(l) == 0:
                 return {'results' : 'no matches found for that hostname'}
